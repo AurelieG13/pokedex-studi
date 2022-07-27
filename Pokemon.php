@@ -7,6 +7,7 @@ class Pokemon {
     private $description;
     private $type1;
     private $type2;
+    private $image;
 
     public function __construct(array $data) {
         $this->hydrate($data);
@@ -90,5 +91,16 @@ class Pokemon {
         return $this;
     }
 
+    public function getImage()
+    {
+        return $this->image;
+    }
 
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
 }

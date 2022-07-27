@@ -64,9 +64,6 @@ class PokemonsManager {
     }
 
     public function getAllByType(string $input) {
-       /*(if ($input instanceof Type) {
-        #code
-        }*/
         $pokemons = [];
         $req = $this->db->query("SELECT * FROM `pokemon` WHERE type1 LIKE :input OR type2 LIKE :input ORDER BY number");
         $req->bindValue(':input', $input, PDO::PARAM_STR);

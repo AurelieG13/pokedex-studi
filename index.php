@@ -39,16 +39,22 @@
     </nav>
 
     <?php
-    require("./PokemonsManager.php");
-    $manager = new PokemonsManager();
-    $pokemons = $manager->getAll();
-    /*var_dump($pokemons);*/
+        require("./PokemonsManager.php");
+        require("./TypesManager.php");
+    
+        $pokemonManager = new PokemonsManager();
+        $pokemons = $pokemonManager->getAll();
+    
+        /*$typeManager = new TypesManager();
+        $types = $typeManager->getAll();*/
+
+        
     ?>
     <main class="container">
         <section class="d-flex flex-wrap justify-content-center">
             <?php foreach ($pokemons as $pokemon) : ?>
                 <div class="card m-5" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="<?= $pokemon->getName() ?>">
+                    <img src="..." class="card-img-top" alt="image">
                     <div class="card-body">
                         <h5 class="card-title"><?= $pokemon->getNumber() ?> # <?php echo $pokemon->getName() ?></h5>
                         <p class="card-text"><?= $pokemon->getDescription() ?></p>
@@ -57,7 +63,6 @@
                 </div>
             <?php endforeach ?>
         </section>
-
         <a href="./create.php" class="btn btn-success">Créer un Pokémon</a>
     </main>
 </body>
