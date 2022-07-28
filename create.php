@@ -42,6 +42,7 @@
 
     require("./PokemonsManager.php");
     require("./TypesManager.php");
+    require("./ImagesManager.php");
 
     $pokemonManager = new PokemonsManager();
 
@@ -52,10 +53,17 @@
         $number = $_POST["number"];
         $name = $_POST["name"];
         $description = $_POST["description"];
-        $type1 = $_POST["type1"];
-        $type2 = $_POST["type2"];
-        $image = $_POST["image"];
+        $idType1 = $_POST["type1"];
+        $idType2 = $_POST["type2"];
+        echo "<pre>";
+        var_dump($_FILES);
+        echo "</pre>";
+
+        if ($_FILES["image"]["size"]< 2000000) {
+            $imagesManager = new ImagesManager();
+           // $pdo = Data
     }
+}
     ?>
     <main class="container">
         <form method="post" enctype="multipart/form-data">
