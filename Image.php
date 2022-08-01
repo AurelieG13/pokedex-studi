@@ -19,38 +19,42 @@ class Image {
         }
     }
     
-    
-    public function getId() {
+
+    public function getId()
+    {
         return $this->id;
     }
 
-    
-    public function setId($id) {
+
+    public function setId($id)
+    {
         $this->id = $id;
 
         return $this;
     }
 
-    
-    public function getName(){
+
+    public function getName()
+    {
         return $this->name;
     }
-
-    
-    public function setName($name) {
+ 
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
     }
 
-    
-    public function getPath() {
-        return $this->color;
+    public function getPath()
+    {
+        return $this->path;
     }
 
 
-    public function setPath($color) {
-        $this->color = $color;
+    public function setPath($path)
+    {
+        $this->path = $path;
 
         return $this;
     }

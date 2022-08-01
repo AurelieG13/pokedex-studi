@@ -36,7 +36,13 @@ class ImagesManager {
         
     }
     
+    public function getLastImageId() {
+        $req = $this->db->query("SELECT * FROM `image` ORDER BY id DESC");
+        return $req->fetch()["id"];
+        
+    }
 
+    
     public function update(Image $image) {
         $req  = $this->db->prepare("UPDATE `image` SET name = :name, path = :path");
         $req->bindValue(':name', $image->getName(), PDO::PARAM_STR);
