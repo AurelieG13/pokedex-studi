@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="./index.php">
                 <img src="./images/logo.png" alt="logo pokedex" width="60" height="60" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
 
     $typeManager = new TypesManager();
     $types = $typeManager->getAll();
-    $error = null ;
+    $error = null;
 
     if ($_POST) {
         $number = $_POST["number"];
@@ -60,18 +60,17 @@
 
 
         try {
-            if ($_FILES["image"]["size"]< 2000000) {
-                $imagesManager = new ImagesManager();
+            if ($_FILES["image"]["size"] < 2000000) {
+                /*$imagesManager = new ImagesManager();*/
                 $fileName = $_FILES["image"]["name"];
                 if (!is_dir("upload/")) {
                     mkdir("upload/");
                 }
                 $targetFile = "upload/{$fileName}";
-                $fileExtension = pathinfo($targetFile, PATHINFO_EXTENSION);
-                
-                define("EXTENSIONS", ["png","jpeg","jpg","webp"]);
+                $fileExtension = pathinfo($targetFile, PATHINFO_EXTENSION);                
+                define("EXTENSIONS", ["png", "jpeg", "jpg", "webp"]);
     
-                if (in_array(strtolower($fileExtension), EXTENSIONS)){
+                if (in_array(strtolower($fileExtension), EXTENSIONS)) {
                     if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
                         $imagesManager = new ImagesManager();
                         $image = new Image(["name" => $fileName, "path" => $targetFile]);
@@ -81,12 +80,12 @@
                         throw new Exception("Une erreur est survenue...");
                 }
             } else {
-                throw new Exception("L'extension du fichier n'est pas correcte");
+                throw new Exception("L'extension du fichier n'est pas correcte.");
             }     
         } else {
-            throw new Exception("Le fichier est trop important");
+            throw new Exception("Le fichier est trop important.");
         }
-    } catch(Exception $e){
+    } catch(Exception $e) {
          $error = $e->getMessage();
     }
     
@@ -101,7 +100,7 @@
         "image" => $idImage,
     ]);
 
-    $pokemonManager->create($newPokemon);
+    $pokemonManager->update($newPokemon);
 
 
 }
@@ -109,14 +108,15 @@
 
 
     <main class="container">
-        <?php if ($error) {
+        <?php 
+        if ($error) {
             echo "<p class='alert alert-danger'>$error</p>";
         } ?>
         <form method="post" enctype="multipart/form-data">
             <label for="number" class="form-label">Numéro</label>
             <input type="number" name="number" placeholder="Le numéro du Pokemon" id="number" class="form-control" min=1 max=950>
             <label for="name" class="form-label">Nom</label>
-            <input type="name" name="name" placeholder="Le nom du Pokemon" id="name" class="form-control" minlength="3" maxlength="40">
+            <input type="text" name="name" placeholder="Le nom du Pokemon" id="name" class="form-control" minlength="3" maxlength="40">
             <label for="description" class="form-label">Description</label>
             <textarea name="description" placeholder="La Description du Pokemon" id="description" class="form-control" rows="6" minlength="10" maxlength="200"></textarea>
             <label for="type1" class="form-label">Type 1</label>
@@ -138,8 +138,8 @@
             </select>
 
             <label for="image" class="form-label">Image</label>
-            <input type="file" name="image" id="image" class="form-control" />
-            <input type="submit" class="btn btn-success mt-3" value="Créer" />
+            <input type="file" name="image" id="image" class="form-control">
+            <input type="submit" class="btn btn-success mt-3" value="Créer">
         </form>
     </main>
 </body>

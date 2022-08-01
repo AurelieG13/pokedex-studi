@@ -13,7 +13,7 @@ class Pokemon {
         $this->hydrate($data);
     }
 
-    public function hydrate(array $data) {
+    public function hydrate(array $data): void {
         foreach ($data as $key => $value) {
             $method = "set" . ucfirst($key);
             if (method_exists($this, $method)) {
@@ -24,17 +24,22 @@ class Pokemon {
 
 //Getters and setters
 
-    public function getId(){
+    public function getId(): int {
         return $this->id;
     }
 
-    public function setId($id) {
-        $this->id = $id;
 
+
+
+
+
+    public function setId(int $id): Pokemon {
+        $this->id = $id;
         return $this;
     }
 
-    public function getNumber() {
+
+    public function getNumber(): int {
         return $this->number;
     }
 
@@ -45,6 +50,7 @@ class Pokemon {
         }
         return $this;
     }
+
 
 
     public function getName() {
@@ -76,7 +82,6 @@ class Pokemon {
 
     public function setType1($type1) {
         $this->type1 = $type1;
-
         return $this;
     }
 

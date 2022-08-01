@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="./index.php">
                 <img src="./images/logo.png" alt="logo pokedex" width="60" height="60" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Accueil <span class="sr-only"></span></a>
+                        <a class="nav-link" href="./index.php">Accueil <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Types</a>
@@ -31,8 +31,8 @@
 
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
                 </form>
             </div>
         </div>
@@ -41,7 +41,7 @@
     <?php
         require("./PokemonsManager.php");
         require("./TypesManager.php");
-    
+        require("./ImagesManager.php");    
         $pokemonManager = new PokemonsManager();
         $pokemons = $pokemonManager->getAll();
     
