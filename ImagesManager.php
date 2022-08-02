@@ -30,8 +30,8 @@ class ImagesManager {
         $req = $this->db->prepare("SELECT * FROM `image` WHERE id = :id");
         $req->execute([":id" => $id]);
         $data = $req->fetch();
-        $paths = new Image($data);
-        return $paths;        
+        $image = new Image($data);
+        return $image;
     }
     
     public function getLastImageId() {
