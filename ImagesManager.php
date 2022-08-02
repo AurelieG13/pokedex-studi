@@ -22,7 +22,7 @@ class ImagesManager {
 
         $req->bindValue(":name", $image->getName(), PDO::PARAM_STR);
         $req->bindValue(":path", $image->getPath(), PDO::PARAM_STR);
-    
+
         $req->execute();
     }
 
@@ -33,17 +33,17 @@ class ImagesManager {
         $image = new Image($data);
         return $image;
     }
-    
+
     public function getLastImageId() {
         $req = $this->db->query("SELECT * FROM `image` ORDER BY id DESC LIMIT 1");
-        return $req->fetch()["id"];        
+        return $req->fetch()["id"];
     }
-    
+
     public function update(Image $image) {
         $req = $this->db->prepare("UPDATE `image` SET name = :name, path = :path");
-                
+
         $req->bindValue(":name", $image->getName(), PDO::PARAM_STR);
-        $req->bindValue(":path", $image->getPath(), PDO::PARAM_STR);
+        $req->bindValue(":description", $image->getPath(), PDO::PARAM_STR);
 
         $req->execute();
     }

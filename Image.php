@@ -10,7 +10,6 @@ class Image {
     }
 
     public function hydrate(array $data): void {
-        /*var_dump($data);*/
         foreach ($data as $key => $value) {
             $method = "set" . ucfirst($key); // setId, setName, setPath
             if (method_exists($this, $method)) {
@@ -18,8 +17,8 @@ class Image {
             }
         }
     }
-    
-/**
+
+    /**
      * Get the value of id
      */ 
     public function getId()
